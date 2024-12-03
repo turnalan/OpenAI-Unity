@@ -174,7 +174,7 @@ namespace OpenAI
         public int? N { get; set; } = 1;
         public string Size { get; set; } = ImageSize.Size1024;
         public string ResponseFormat { get; set; } = ImageResponseFormat.Url;
-        public string User { get; set; }
+        public string User { get; set; };
         public string Model { get; set; } = "dall-e-3"
     }
 
