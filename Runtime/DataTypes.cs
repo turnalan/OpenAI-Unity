@@ -174,13 +174,13 @@ namespace OpenAI
         public int? N { get; set; } = 1;
         public string Size { get; set; } = ImageSize.Size1024;
         public string ResponseFormat { get; set; } = ImageResponseFormat.Url;
-        public string User { get; set; };
-        public string Model { get; set; } = "dall-e-3"
+        public string User { get; set; }
     }
 
     public sealed class CreateImageRequest : CreateImageRequestBase
     {
         public string Prompt { get; set; }
+        public string Model { get; set; } = "dall-e-3";
     }
 
     public sealed class CreateImageEditRequest : CreateImageRequestBase
