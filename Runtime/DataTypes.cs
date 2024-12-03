@@ -18,7 +18,7 @@ namespace OpenAI
         public string CompletionTokens { get; set; }
         public string TotalTokens { get; set; }
     }
-    
+
     public class OpenAIFile
     {
         public string Prompt { get; set; }
@@ -54,9 +54,9 @@ namespace OpenAI
         public string Organization { get; set; }
     }
     #endregion
-    
+
     #region Models API Data Types
-    public struct ListModelsResponse: IResponse
+    public struct ListModelsResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -117,7 +117,7 @@ namespace OpenAI
         public Usage Usage { get; set; }
         public string SystemFingerprint { get; set; }
     }
-    
+
     public struct ChatChoice
     {
         public ChatMessage Message { get; set; }
@@ -132,7 +132,7 @@ namespace OpenAI
         public string Role { get; set; }
         public string Content { get; set; }
     }
-    
+
     #endregion
 
     #region Audio Transcriptions Data Types
@@ -152,22 +152,22 @@ namespace OpenAI
         public string ResponseFormat { get; set; } = AudioResponseFormat.Json;
         public float? Temperature { get; set; } = 0;
     }
-    
-    public class CreateAudioTranscriptionsRequest: CreateAudioRequestBase
+
+    public class CreateAudioTranscriptionsRequest : CreateAudioRequestBase
     {
         public string Language { get; set; }
     }
-    
-    public class CreateAudioTranslationRequest: CreateAudioRequestBase { }
-    
-    public struct CreateAudioResponse: IResponse
+
+    public class CreateAudioTranslationRequest : CreateAudioRequestBase { }
+
+    public struct CreateAudioResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
         public string Text { get; set; }
     }
     #endregion
-    
+
     #region Images API Data Types
     public class CreateImageRequestBase
     {
@@ -175,26 +175,27 @@ namespace OpenAI
         public string Size { get; set; } = ImageSize.Size1024;
         public string ResponseFormat { get; set; } = ImageResponseFormat.Url;
         public string User { get; set; }
+        public string Model { get; set; } = "dall-e-3"
     }
 
-    public sealed class CreateImageRequest: CreateImageRequestBase
+    public sealed class CreateImageRequest : CreateImageRequestBase
     {
         public string Prompt { get; set; }
     }
-    
-    public sealed class CreateImageEditRequest: CreateImageRequestBase
+
+    public sealed class CreateImageEditRequest : CreateImageRequestBase
     {
         public string Image { get; set; }
         public string Mask { get; set; }
         public string Prompt { get; set; }
     }
 
-    public sealed class CreateImageVariationRequest: CreateImageRequestBase
+    public sealed class CreateImageVariationRequest : CreateImageRequestBase
     {
         public string Image { get; set; }
     }
 
-    public struct CreateImageResponse: IResponse
+    public struct CreateImageResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -217,7 +218,7 @@ namespace OpenAI
         public string User { get; set; }
     }
 
-    public struct CreateEmbeddingsResponse: IResponse
+    public struct CreateEmbeddingsResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -229,14 +230,14 @@ namespace OpenAI
 
     public struct EmbeddingData
     {
-        public string Object  { get; set; }
+        public string Object { get; set; }
         public List<float> Embedding { get; set; }
         public int Index { get; set; }
     }
     #endregion
 
     #region Files API Data Types
-    public struct ListFilesResponse: IResponse
+    public struct ListFilesResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -245,7 +246,7 @@ namespace OpenAI
         public bool HasMore { get; set; }
     }
 
-    public struct DeleteResponse: IResponse
+    public struct DeleteResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -278,7 +279,7 @@ namespace OpenAI
         public string Suffix { get; set; }
     }
 
-    public struct ListFineTunesResponse: IResponse
+    public struct ListFineTunesResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -286,15 +287,15 @@ namespace OpenAI
         public List<FineTune> Data { get; set; }
         public object NextStartingAfter { get; set; }
     }
-    
-    public struct ListFineTuneEventsResponse: IResponse
+
+    public struct ListFineTuneEventsResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
         public string Object { get; set; }
         public List<FineTuneEvent> Data { get; set; }
     }
-    
+
     public class FineTune
     {
         public string Id { get; set; }
@@ -333,8 +334,8 @@ namespace OpenAI
         public string Input { get; set; }
         public string Model { get; set; } = ModerationModel.Latest;
     }
-    
-    public struct CreateModerationResponse: IResponse
+
+    public struct CreateModerationResponse : IResponse
     {
         public ApiError Error { get; set; }
         public string Warning { get; set; }
@@ -357,7 +358,7 @@ namespace OpenAI
         public const string MultipartFormData = "multipart/form-data";
         public const string ApplicationJson = "application/json";
     }
-    
+
     public static class ResponseType
     {
         public const string Text = "text";
@@ -376,7 +377,7 @@ namespace OpenAI
         public const string Url = "url";
         public const string Base64Json = "b64_json";
     }
-    
+
     public static class AudioResponseFormat
     {
         public const string Json = "json";
@@ -385,7 +386,7 @@ namespace OpenAI
         public const string VerboseJson = "verbose_json";
         public const string Vtt = "vtt";
     }
-    
+
     public static class ModerationModel
     {
         public const string Stable = "text-moderation-stable";
